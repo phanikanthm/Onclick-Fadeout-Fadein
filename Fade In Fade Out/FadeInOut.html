@@ -1,0 +1,66 @@
+<html>
+<head>
+
+</head>
+
+<body>
+    <button onclick="fadeOut()" id="idout">Fade Out</button>
+    
+    <br>
+    <br>
+    <img id="img1" src="Lightbottle.jpg" width="300px" height="300px"/>
+    <br>
+    <br>
+    <button onclick="fadeIn()" id="idclick">Fade In</button>
+    
+    
+
+    <script>
+            var opacity=0;
+            var intervalID=0;
+
+            function fadeOut(){
+                clearInterval(intervalID);
+                intervalID=setInterval(hide,2000);
+            }
+
+            function fadeIn(){
+                clearInterval(intervalID);
+                intervalID=setInterval(show,2000);
+
+            }
+            function show(){
+                var img = document.getElementById("img1");
+                opacity = Number(window.getComputedStyle(img).getPropertyValue("opacity"));
+                if(opacity<1)
+                {
+                        opacity=opacity+0.1; 
+                        img.style.opacity=opacity;
+                }
+                else{
+                    clearInterval(intervalID);
+                }
+
+            }
+
+            function hide(){
+                var img = document.getElementById("img1");
+                opacity = Number(window.getComputedStyle(img).getPropertyValue("opacity"));
+                if(opacity>0)
+                {
+                        opacity=opacity-0.1; 
+                        img.style.opacity=opacity;
+                }
+                else{
+                    clearInterval(intervalID);
+                }
+            }
+
+
+
+
+    </script>
+
+
+</body>
+</html>
